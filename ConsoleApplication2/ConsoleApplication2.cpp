@@ -33,6 +33,7 @@ int main()
 {
 	SetConsoleOutputCP(CP_UTF8);
 	SetConsoleCP(CP_UTF8);
+	system("color 02");
 	string seguir = "";
 
 	do {
@@ -167,10 +168,10 @@ void crearVotantes() {
 					cedula);
 
 			if (resultado) {
-				cout << "\n Registro exitoso";
+				cout << "\n Registro exitoso"<<endl;
 			}
 			else {
-				cout << "\n Registro Fallido";
+				cout << "\n Registro Fallido"<<endl;
 			}
 		}
 		case 2: {
@@ -199,13 +200,13 @@ void consultarVotantes() {
 	do {
 		seguir = true;
 		string cedula = "";
-		cout << "Escriba el documento a consultar: ";
+		cout << "Escriba el documento a consultar: "<<endl;
 		cin >> cedula;
 		for (int i = 0; i < size(primerNombres); i++) {
 			if (cedulas[i] == cedula) {
 				seguir = false;
-				cout << "******************************";
-				cout << "*******Cedula Encontrada******";
+				cout << "******************************"<<endl;
+				cout << "*******Cedula Encontrada******" << endl;
 				cout << "Primer Nombre: " << primerNombres[i] << endl;
 				cout << "Primer Apellido: " << primerApellidos[i] << endl;
 				cout << "Correo: " << correos[i] << endl;
