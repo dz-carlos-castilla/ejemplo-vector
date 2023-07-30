@@ -1,0 +1,35 @@
+# Ignorar archivos compilados y ejecutables
+*.exe
+*.out
+*.o
+
+# Ignorar archivos generados por el compilador y el enlazador
+*.obj
+*.pdb
+*.pch
+*.gch
+
+# Ignorar archivos de dependencias de compilación
+*.d
+
+# Ignorar archivos de caché y temporales
+*.cache
+*.log
+*.tmp
+
+# Ignorar directorios de salida y compilación
+bin/
+build/
+
+# Ignorar archivos y directorios específicos
+config.ini
+secret_key.txt
+
+# Ignorar archivos de respaldo creados por editores de texto
+*~
+.vs/
+x64/
+
+
+
+
