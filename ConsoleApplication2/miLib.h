@@ -27,3 +27,13 @@ bool crear(string nombre,
 	int edad,
 	int puestoVotacion,
 	string cedula);
+
+
+bool actualizar(string nombre,
+	string apellido,
+	string correo,
+	string telefono,
+	int edad,
+	int puestoVotacion,
+	string cedula,
+	int indece);

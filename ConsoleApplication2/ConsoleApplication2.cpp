@@ -76,7 +76,8 @@ int main()
 				break;
 			}
 			case 4: {
-				//actualizar
+				actualizarVotantes();
+				seguir = "s";
 				break;
 			}
 			case 5: {
@@ -173,6 +174,7 @@ void crearVotantes() {
 			else {
 				cout << "\n Registro Fallido"<<endl;
 			}
+			break;
 		}
 		case 2: {
 			seguir = false;
@@ -186,9 +188,93 @@ void crearVotantes() {
 		system("cls");
 	} while (seguir);
 }
-void eliminarVotantes() {}
-void actualizarVotantes() {
 
+void actualizarVotantes() {
+	system("cls");
+
+	cout << "***********************" << endl;
+	cout << "***Consultar Votante y actualizar***" << endl;
+	cout << "**********************" << endl;
+	bool seguir = true;
+	do {
+		seguir = true;
+		string cedula = "";
+		cout << "Escriba el documento a consultar: " << endl;
+		cin >> cedula;
+		int indice = -1;
+		for (int i = 0; i < size(primerNombres); i++) {
+			if (cedulas[i] == cedula) {
+				seguir = false;
+				cout << "******************************" << endl;
+				cout << "*******Cedula Encontrada******" << endl;
+				cout << "Primer Nombre: " << primerNombres[i] << endl;
+				cout << "Primer Apellido: " << primerApellidos[i] << endl;
+				cout << "Correo: " << correos[i] << endl;
+				cout << "Telefono: " << telefonos[i] << endl;
+				cout << "Edad: " << edades[i] << endl;
+				cout << "Puesto Votación: " << puestoVotaciones[i] << endl;
+				cout << "Cedula: " << cedulas[i] << endl;
+				indice = i;
+				break;
+			}
+		}
+
+		if (indice != -1) {
+			string nombre = "";
+			string apellido = "";
+			string correo = "";
+			string telefono = "";
+			int edad = 0;
+			int puestoVotacion = 0;
+			string cedula = "";
+			//falta tomar los datos de cada persona
+
+			cout << "\n Digite el Primer Nombre: ";
+			cin >> nombre;
+			cout << "\n Digite el Primer Apellido: ";
+			cin >> apellido;
+			cout << "\n Digite el Correo: ";
+			cin >> correo;
+			cout << "\n Digite el telefono: ";
+			cin >> telefono;
+			cout << "\n Digite la edad: ";
+			cin >> edad;
+			cout << "\n Digite puesto de votación: ";
+			cin >> puestoVotacion;
+			cout << "\n Digite su cedula: ";
+			cin >> cedula;
+			bool resultado =
+				actualizar(nombre,
+					apellido,
+					correo,
+					telefono,
+					edad,
+					puestoVotacion,
+					cedula,
+					indice);
+
+			if (resultado) {
+				cout << "\n Registro exitoso" << endl;
+			}
+			else {
+				cout << "\n Registro Fallido" << endl;
+			}
+		}
+		if (seguir) {
+
+
+			cout << "\n no se encontro información de la persona" << endl;
+			string s = "";
+			cout << "\nDesea Seguir Consultando (s/n)?" << endl;
+			cin >> s;
+			if (s == "s") {
+				seguir = true;
+			}
+			else {
+				seguir = false;
+			}
+		}
+	} while (seguir);
 }
 void consultarVotantes() {
 	system("cls");
@@ -244,20 +330,57 @@ bool crear(string nombre,
 	int puestoVotacion,
 	string cedula) {
 
-	int index = -1;
+	int indece = -1;
 	for (int i = 0; i < size(primerNombres); i++) {
 		if (primerNombres[i] == "") {
-			index = i;
+			indece = i;
 			break;
 		}
 	}
-	if (index == -1) return false;
-	primerNombres[index] = nombre;
-	primerApellidos[index] = apellido;
-	correos[index] = correo;
-	telefonos[index] = telefono;
-	edades[index] = edad;
-	puestoVotaciones[index] = puestoVotacion;
-	cedulas[index] = cedula;
+	if (indece == -1) return false;
+	primerNombres[indece] = nombre;
+	primerApellidos[indece] = apellido;
+	correos[indece] = correo;
+	telefonos[indece] = telefono;
+	edades[indece] = edad;
+	puestoVotaciones[indece] = puestoVotacion;
+	cedulas[indece] = cedula;
+	return true;
+}
+
+
+bool actualizar(string nombre,
+	string apellido,
+	string correo,
+	string telefono,
+	int edad,
+	int puestoVotacion,
+	string cedula,
+	int indece) {
+
+	if (nombre.length() > 0) {
+		primerNombres[indece] = nombre;
+	}
+	if (apellido != "") {
+		primerApellidos[indece] = apellido;
+	}
+	if (correo != "") {
+		correos[indece] = correo;
+	}
+	if (telefono != "") {
+		telefonos[indece] = telefono;
+	}
+
+	if (edad > 0) {
+		edades[indece] = edad;
+	}
+
+	if (puestoVotacion > 0) {
+		puestoVotaciones[indece] = puestoVotacion;
+	}
+
+	if (!cedula.empty()) {
+		cedulas[indece] = cedula;
+	}
 	return true;
 }
